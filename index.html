@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>條件觸發遊戲 - 選單升級版</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Header */
+        header {
+            background: #111;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        /* Hamburger */
+        #hamburger {
+            font-size: 26px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            background: #333;
+        }
+
+        /* Menu */
+        #menu {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 220px;
+            height: 100%;
+            background: #111;
+            padding: 20px 10px;
+            transition: left .3s ease;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+        }
+
+        #menu.open {
+            left: 0;
+        }
+
+        #menu a {
+            display: block;
+            padding: 10px;
+            background: #333;
+            margin: 6px 0;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        #menu a:hover {
+            background: #555;
+        }
+
+        /* Content */
+        #content {
+            padding: 20px;
+            background: #222;
+            min-height: calc(100vh - 60px);
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>條件觸發遊戲</h1>
+    <div id="hamburger">☰</div>
+</header>
+
+<div id="menu">
+    <script>
+        for (let i = 1; i <= 20; i++) {
+            document.write(`<a href="#" onclick="showText(${i}); closeMenu();">${i}</a>`);
+        }
+    </script>
+</div>
+
+<div id="content">
+    <h2>歡迎</h2>
+    <p>請點選選單查看內容。</p>
+</div>
+
+<script>
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
+
+    hamburger.onclick = () => {
+        menu.classList.toggle("open");
+    };
+
+    function closeMenu() {
+        menu.classList.remove("open");
+    }
+
+    function showText(num) {
+        const content = {
+            1: " 1 號 觸發條件：[大家不講話超過兩秒] 觸發動作：[起立蹲下1次]。",
+            2: " 2 號 觸發條件：[有人走動] 觸發動作：[拍掌5下!]。",
+            3: " 3 號 觸發條件：[有人喝水/飲料] 觸發動作：[舉起右手2秒!]。",
+            4: " 4 號 觸發條件：[有人舉左/右手] 觸發動作：[拍大腿2下!]。",
+            5: " 5 號 觸發條件：[有人說到你、我、他] 觸發動作：[你要說哎呀呀~]。",
+            6: " 6 號 觸發條件：[有人用手指別人] 觸發動作：[拍左邊或右邊的人肩膀一下]。",
+            7: " 7 號 觸發條件：[有人換題目卡] 觸發動作：[拍自己的後腦朝2下]。",
+            8: " 8 號 觸發條件：[有人手(左或右都算)放膝蓋上] 觸發動作：[驚訝的哇哇哇一次]。",
+            9: " 9 號 觸發條件：[有人手摸地板] 觸發動作：[把你前面的地板拍乾淨(不管有沒有髒)]。",
+            10: " 10 號 觸發條件：[有人站起來] 觸發動作：[打哈欠一次]。",
+            11: " 11 號 觸發條件：[有人拍掌] 觸發動作：[左手拍右腳三下]。",
+            12: " 12 號 觸發條件：[有人罵髒話] 觸發動作：[對他說：耶穌愛你]。",
+            13: " 13 號 觸發條件：[有人換題目卡] 觸發動作：[對他嘖嘖嘖一次+搖頭]。",
+            14: " 14 號 觸發條件：[有人說等一下] 觸發動作：[對他說：時候到了]。",
+            15: " 15 號 觸發條件：[] 觸發動作：[]。",
+            16: " 16 號 觸發條件：[] 觸發動作：[]。",
+            17: " 17 號 觸發條件：[] 觸發動作：[]。",
+            18: " 18 號 觸發條件：[] 觸發動作：[]。",
+            19: " 19 號 觸發條件：[] 觸發動作：[]。",
+            20: " 20 號 觸發條件：[____] 觸發動作：[____]。"
+        };
+
+        document.getElementById("content").innerHTML = `
+            <h2>第 ${num} 頁</h2>
+            <p>${content[num]}</p>
+        `;
+    }
+</script>
+
+</body>
+</html>
